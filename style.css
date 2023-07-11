@@ -74,15 +74,20 @@ height: 100%;
    
 }
 .content .options{
-    width: 300px;
-    height: 400px;
-    background-color: aquamarine;
+    width: 350px;
+    height: 250px;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 30px;
-    border-radius: 30px;
+    border-radius: 15px;
+    color: rgb(16, 98, 173);
+    border: 2px solid rba(0, 0, 0, 0.178);
+    border-left:8px solid rgb(56, 125, 146);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0);
+    transition: 0.3s
 }
 .func-name{
     font-size: 30px;
@@ -91,9 +96,11 @@ height: 100%;
 .func{
     margin-top: 30px;
     width: 230px;
+    font-size: 20px;
 }
 .options:hover{
-    background-color:white;
+    background-color:rgba(27, 26, 26, 0.123);
+    box-shadow: 0 12px 18px 0 rgba(0,0,0,0.3);
 }
 
 .heading{
