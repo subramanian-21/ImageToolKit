@@ -22,7 +22,7 @@
     </div>
     <div class="content-upload">
         <div class="upload-box">
-            <div class="btn">File upload</div>
+         <input type="file" class="btn" >
             <div class="upload-txt">Drag and drop your files here...</div>
         </div>
         <div class="converter">
@@ -34,12 +34,13 @@
                     <option value="png">PNG</option>
                 </select>
 
-                <button class="convert-btn" disabled>Convert</button>
+                <button class="convert-btn" onclick="ImageConvert()">Convert</button>
            
         </div>
     </div>
 
 
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
