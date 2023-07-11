@@ -26,7 +26,7 @@ a{
     font-weight: 1000;
     font-size: 30px;
     margin-left: 20px;
-
+    cursor: pointer;
     font-family:cursive;
 }
 .nav-bar{
@@ -70,7 +70,7 @@ height: 100%;
     justify-content: center;
     align-items: center;
 
-    background-color: antiquewhite;
+    background-color: white;
    
 }
 .content .options{
@@ -95,11 +95,91 @@ height: 100%;
 .options:hover{
     background-color:white;
 }
+
+.heading{
+    margin: 30px;
+}
+.heading h1,h4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.upload-box{
+    width: 500px;
+    height: 300px;
+    background-color: aliceblue;
+    border: 4px dashed;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.content-upload{
+    width: 100%;
+height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+    flex-direction: column;
+}
+.btn{
+    background-color: rgb(22, 184, 22);
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 30px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+}
+.upload-txt{
+    font-size: large;
+    font-weight: 500;
+}
+.converter{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+#filetype{
+    height: 40px;
+    padding: 5px;
+    font-size: 100%;
+    border: none;
+    outline: none;
+
+    background-color: rgb(255, 132, 0);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.convert-btn{
+    margin-top: 30px;
+    background-color: purple;
+    padding: 5px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 900;
+    font-size: 100%;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+}
 @media(max-width:600px){
 .content{
     flex-direction: column;
 }
 .content .options{
+    height: 300px;
+}
+.upload-box{
+    width: 350px;
     height: 300px;
 }
 }
