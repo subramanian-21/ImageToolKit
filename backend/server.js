@@ -6,7 +6,7 @@ const multer = require('multer')
 const app = express()
 
 app.use(cors())
-
-app.listen(5000,()=>{
+app.use('/',require('./router/allRoutes'))
+app.listen(5001,()=>{
     console.log('Server@5000')
 })
