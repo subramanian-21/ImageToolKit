@@ -6,8 +6,8 @@ const fs = require("fs");
 const allController = {
   converter: async (req, res) => {
     try {
-      const image = await jimp.read(req.file.path);
       const imagePath = req.file.path;
+      const image = await jimp.read(imagePath);
       const toFormat = req.body.format;
 
       const convertedImageName = `converted.${toFormat}`;
@@ -47,5 +47,22 @@ const allController = {
       res.status(500).send("Image conversion failed.");
     }
   },
+  compresser:async(req,res)=>{
+    try {
+      const imagePath = req.file.path;
+      const image = await jimp.read(imagePath)
+      const sizePercentage = req.body.size
+      const imageName = req.file.originalname
+      const imageSplitArray = imageName.split('.')
+      const imageSplitArrayLength = imageSplitArray.length
+      const imageFormat = imageSplitArray[imageSplitArrayLength-1]
+
+      const convertedImageName = `converted.${imageFormat}`
+      const convertedImagePath = 'converted/'+convertedImageName
+      
+    } catch (error) {
+      
+    }
+  }
 };
 module.exports = allController;
