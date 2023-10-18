@@ -1,5 +1,14 @@
-<input type="file" name="" id="" (input)="sendFile($event)" accept="image/**">
+<input type="file" name="" id="" (input)="setImage($event)" accept="image/**" #imageRef>
+<select name="" id="" (input)="setFormat($event)" #formatRef>
+  <option value="jpg">JPG</option>
+  <option value="png">PNG</option>
+  <option value="jpeg">JPEG</option>
+  <option value="webp">WEBP</option>
+</select>
+<button (click)="sendFile(inpImage,format)">
+send
+</button>
+<div class="" *ngIf="outImage">
+  <img [src]="outImage" alt="">
 
-<div class="" *ngIf="images">
-  <img [src]="images" alt="">
 </div>

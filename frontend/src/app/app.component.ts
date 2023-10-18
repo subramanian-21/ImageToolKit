@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { ImageUploadService } from './services/image-upload.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -10,15 +10,20 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class AppComponent {
   constructor(private imageUploadService: ImageUploadService,private sanitizer: DomSanitizer) {}
   title = 'frontend';
-  images:any
-  sendFile(event:any){
-    
-    const image = event.target.files[0]
-       
-    this.imageUploadService.uploadImage(image).subscribe(res=>{
+  outImage:any
+  inpImage:any
+  format:any
+  setFormat(val:any){
+    this.format = val.target.value
+  }
+  setImage(val:any){
+    this.inpImage = val.target.files[0]
+  }
+  sendFile(image:any,format:string){
+  
+    this.imageUploadService.uploadImage(image,format).subscribe(res=>{
       const imagetoblog = window.URL.createObjectURL(res)
-      this.images = this.sanitizer.bypassSecurityTrustResourceUrl(imagetoblog)
-      console.log("res"+res)
+      this.outImage = this.sanitizer.bypassSecurityTrustResourceUrl(imagetoblog)
     })
   }
 }
