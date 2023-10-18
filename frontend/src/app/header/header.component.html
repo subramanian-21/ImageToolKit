@@ -1,8 +1,8 @@
 <div class="w-full h-[80px] bg-black flex items-center px-2 lg:px-5 justify-between">
-<div class="text-2xl font-mono">ImageToolKit</div>
+<div class="text-2xl font-mono font-extralight">ImageToolKit</div>
 <div class="flex">
-    <div class="search-opt"> <i class="bi bi-search"></i></div>
-    <input  type="text" #searchInput appAnimate [placeholder]="'Search Games...'" autofocus>
+    <div class="search-opt" (click)="focusInput(searchInput)"> <i class="bi bi-search"></i></div>
+    <input  type="text" #searchInput appAnimate [placeholder]="'Search Converters...'" autofocus>
 </div>
 <div class="text-lg">Converted</div>
 </div>

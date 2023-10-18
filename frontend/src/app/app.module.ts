@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { MaterialModule } from './module/material/material.module';
+import { AnimateDirective } from './directive/animate.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    AnimateDirective
   ],
   imports: [
     BrowserModule,
