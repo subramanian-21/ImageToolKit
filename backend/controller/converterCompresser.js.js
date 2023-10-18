@@ -1,9 +1,7 @@
 const jimp = require("jimp");
-const multer = require("multer");
-const upload = multer({ dest: "upload" });
 const path = require("path");
 const fs = require("fs");
-const allController = {
+const converterCompresser = {
   converter: async (req, res) => {
     try {
       const imagePath = req.file.path;
@@ -47,26 +45,26 @@ const allController = {
       res.status(500).send("Image conversion failed.");
     }
   },
-  compresser:async(req,res)=>{
+  compresser: async (req, res) => {
     try {
       const imagePath = req.file.path;
-      const image = await jimp.read(imagePath)
-      const quality = req.body.quality
-      const imageName = req.file.originalname
-      const imageSplitArray = imageName.split('.')
-      const imageSplitArrayLength = imageSplitArray.length
-      const imageFormat = imageSplitArray[imageSplitArrayLength-1]
+      const image = await jimp.read(imagePath);
+      const quality = req.body.quality;
+      const imageName = req.file.originalname;
+      const imageSplitArray = imageName.split(".");
+      const imageSplitArrayLength = imageSplitArray.length;
+      const imageFormat = imageSplitArray[imageSplitArrayLength - 1];
 
-      const convertedImageName = `converted.${imageFormat}`
-      const convertedImagePath = 'converted/'+convertedImageName
-      await jimp.quality(quality).writeAsync(convertedImagePath)
+      const convertedImageName = `converted.${imageFormat}`;
+      const convertedImagePath = "converted/" + convertedImageName;
+      await jimp.quality(quality).writeAsync(convertedImagePath);
       const convertedImageAbsolutePath = path.resolve(
         __dirname,
         "../converted",
         convertedImageName
       );
 
-     res.set("Content-Type", `image/${imageFormat}`);
+      res.set("Content-Type", `image/${imageFormat}`);
       res.sendFile(convertedImageAbsolutePath, (err) => {
         if (err) {
           console.error("File sending error:", err);
@@ -93,6 +91,6 @@ const allController = {
       console.error("Image compression error:", error);
       res.status(500).send("Image conversion failed.");
     }
-  }
+  },
 };
-module.exports = allController;
+module.exports = converterCompresser;
