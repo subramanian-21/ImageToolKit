@@ -17,5 +17,10 @@ export class BodyComponent {
       link : '/compresser',
       desc : 'Compress your Images with High Quality'
     },
+    {
+      name : 'Image Tone Modifier',
+      link : '/tone',
+      desc : 'Change Image\'s Brightness, Contrast, Sharpness, ...'
+    },
   ]    
 }

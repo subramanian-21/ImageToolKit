@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-converter-box',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./converter-box.component.css']
 })
 export class ConverterBoxComponent {
+@Input() allConverters:any
 
 }

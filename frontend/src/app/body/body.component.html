@@ -1,5 +1,8 @@
 <div class="body flex justify-center">
-    <div class="mbody w-full lg:w-4/5 ">
-        <app-converter-box class="flex flex-wrap justify-center gap-3"></app-converter-box>
+    <div class="mbody w-full lg:w-4/5 flex flex-wrap justify-center gap-3">
+        <div class="" *ngFor="let item of allConverters">
+            <app-converter-box [allConverters]="item" class=""></app-converter-box>
+        </div>
+        
     </div>
 </div>
