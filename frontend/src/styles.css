@@ -8,3 +8,13 @@
   @apply text-white;
     }
 }
+::-webkit-scrollbar{
+    width: 5px;
+    height: 5px;
+}
+::-webkit-scrollbar-track{
+    background-color:black
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgb(145, 146, 147);
+}
