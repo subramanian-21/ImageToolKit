@@ -10,7 +10,7 @@ export class BodyComponent {
     {
       name : 'Format Converter',
       link : '/converter',
-      desc : 'Convert your Image from JPG,JPEG,PNG to JPG,JPEG,PNG'
+      desc : 'Convert your Image from JPG, JPEG, PNG to JPG, JPEG, PNG'
     },
     {
       name : 'Image Compresser',

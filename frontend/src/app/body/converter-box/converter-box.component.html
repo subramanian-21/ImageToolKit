@@ -1,3 +1,8 @@
-<div class="w-[350px] h-[250px] bg-gray-700 rounded-2xl border border-1 border-gray-500">
-    <div class="text-2xl">{{allConverters.name}}</div>
-</div>
+
+    <div [routerLink]="allConverters.link" class="w-[350px] h-[250px] bg-gray-700 rounded-2xl border border-1 border-gray-500">
+        <a [routerLink]="allConverters.link" class="flex items-center flex-col">
+            <div class="text-2xl font-bold font flex justify-center h-[100px] items-center">{{allConverters.name}}</div>
+            <div class="w-4/5 font">{{allConverters.desc}}</div>
+         </a>
+    </div>
+
