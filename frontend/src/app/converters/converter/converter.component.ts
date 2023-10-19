@@ -10,8 +10,14 @@ import { ImageUploadService } from 'src/app/services/image-upload.service';
 export class ConverterComponent {
   constructor(private imageUploadservice:ImageUploadService,private sanitizer:DomSanitizer) { }
   savedImage:any
+  outImage:any
+  inpImage:any
   close(){
     this.savedImage=null
+  }
+  format:string=""
+  setFormat(e:any){
+    this.format = e.target.value
   }
   selectOptions:Array<any> = [
     {value:null,name:'--'},
@@ -23,6 +29,7 @@ export class ConverterComponent {
   ]
 loadImage(img:any){
   const file = img.target.files[0]
+  this.inpImage = file
   const reader = new FileReader()
   reader.onload=()=>{
     this.savedImage = reader.result
@@ -32,6 +39,16 @@ loadImage(img:any){
   }
   }
 sendToServer(){
-  
+  if(!this.savedImage){
+    alert("Select a File to Convert")
+  }
+  else if(!this.format){
+    alert("Select Format")
+  }
+  this.imageUploadservice.uploadImage(this.inpImage,this.format).subscribe(res=>{
+       const imagetoblog = window.URL.createObjectURL(res)
+       this.outImage = this.sanitizer.bypassSecurityTrustResourceUrl(imagetoblog)
+       console.log(res)
+       })
 }
 }

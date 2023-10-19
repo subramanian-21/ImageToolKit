@@ -15,11 +15,14 @@
         </div>
         <div class="h-5"></div>
     <label class="select-label" for="select">Select Format to be converted </label>
-     <select class="select-tag" id="select">
+     <select class="select-tag" id="select" (input)="setFormat($event)">
         <option *ngFor="let item of selectOptions" [value]="item.value">{{item.name}}</option>
      </select>
      <button (click)="sendToServer()" class="button-class ">Convert...</button>
     </div>
+</div>
+<div class="" *ngIf="outImage">
+    <img [src]="outImage" alt="">
 </div>
     
 <!-- *ngFor="let item of selectOptions" [value]="item.value">{{item.name}} -->
