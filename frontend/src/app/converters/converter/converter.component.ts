@@ -16,6 +16,7 @@ export class ConverterComponent {
     this.savedImage=null
   }
   format:string=""
+  name:string = `converted.${this.format}`
   setFormat(e:any){
     this.format = e.target.value
   }
@@ -48,7 +49,9 @@ sendToServer(){
   this.imageUploadservice.uploadImage(this.inpImage,this.format).subscribe(res=>{
        const imagetoblog = window.URL.createObjectURL(res)
        this.outImage = this.sanitizer.bypassSecurityTrustResourceUrl(imagetoblog)
-       console.log(res)
        })
+}
+downloadImage(){
+
 }
 }
