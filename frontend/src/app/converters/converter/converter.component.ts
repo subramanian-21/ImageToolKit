@@ -40,12 +40,6 @@ loadImage(img:any){
   }
   }
 sendToServer(){
-  if(!this.savedImage){
-    alert("Select a File to Convert")
-  }
-  else if(!this.format){
-    alert("Select Format")
-  }
   this.imageUploadservice.uploadImage(this.inpImage,this.format).subscribe(res=>{
        const imagetoblog = window.URL.createObjectURL(res)
        this.outImage = this.sanitizer.bypassSecurityTrustResourceUrl(imagetoblog)

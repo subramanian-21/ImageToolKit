@@ -18,9 +18,9 @@
      <select class="select-tag" id="select" (input)="setFormat($event)">
         <option *ngFor="let item of selectOptions" [value]="item.value">{{item.name}}</option>
      </select>
-     <button (click)="sendToServer()" class="button-class" *ngIf="!outImage;else downloadBtn">Convert</button>
+     <button (click)="sendToServer()" [disabled]="!savedImage || !format" [ngClass]="{'cursor-not-allowed':!savedImage || !format}" [ngStyle]="{backgroundColor:!savedImage || !format? 'red':'green'}" class="button-class " *ngIf="!outImage;else downloadBtn">Convert</button>
 
-     <ng-template #downloadBtn class="flex justify-center items-center">
+     <ng-template #downloadBtn clasbg-green-50s="flex justify-center items-center">
         <a [href]="outImage" [download]="name" download (click)="downloadImage()" class="button-class bg-red-500 flex justify-center items-center">Download</a>
      </ng-template>
     </div>
