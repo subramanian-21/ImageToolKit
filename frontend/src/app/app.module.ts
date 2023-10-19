@@ -8,13 +8,19 @@ import { HeaderComponent } from './header/header.component';
 import { MaterialModule } from './module/material/material.module';
 import { AnimateDirective } from './directive/animate.directive';
 import { BodyComponent } from './body/body.component';
+import { ConverterBoxComponent } from './body/converter-box/converter-box.component';
+import { ConverterComponent } from './converters/converter/converter.component';
+import { CompresserComponent } from './converters/compresser/compresser.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     AnimateDirective,
-    BodyComponent
+    BodyComponent,
+    ConverterBoxComponent,
+    ConverterComponent,
+    CompresserComponent
   ],
   imports: [
     BrowserModule,

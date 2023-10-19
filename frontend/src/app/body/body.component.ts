@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent {
-
+  allConverters:Array<object> = [
+    {
+      name : 'Format Converter',
+      link : '/converter',
+      desc : 'Convert your Image from JPG,JPEG,PNG to JPG,JPEG,PNG'
+    },
+    {
+      name : 'Image Compresser',
+      link : '/compresser',
+      desc : 'Compress your Images with High Quality'
+    },
+  ]    
 }
