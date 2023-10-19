@@ -1,12 +1,18 @@
 <div class="w-full flex justify-center">
     <div class="w-full lg:w-4/5 min-h-screen flex flex-col items-center">
         <div class="text-2xl">Image Format Converter</div>
-        <div class="flex items-center">
+        <div class="flex items-center px-5">
             <div class="text-sm">Transform your image from JPG, PNG, and JPEG to your preferred format - JPG, PNG, or JPEG.</div>
             <i class="bi bi-question-circle-fill ml-3 text-2xl cursor-pointer"></i>
         </div>
-        
-
+        <div class="w-full flex justify-center mt-5">
+            <div class="w-[300px] h-[250px] lg:w-[500px] lg:h-[400px] bg-green-500 relative flex flex-col justify-center items-center">
+                <i *ngIf="savedImage" (click) = 'close()' class="bi bi-x-circle absolute top-3 right-3 text-2xl"></i>
+                <input  type="file" id="fileInput" accept="image/*" (input)="loadImage($event)">
+                <label *ngIf="!savedImage" for="fileInput">Select File...</label>
+                <img [src]="savedImage" alt="" class="w-4/5" >
+            </div>
+        </div>
     </div>
 </div>
     
