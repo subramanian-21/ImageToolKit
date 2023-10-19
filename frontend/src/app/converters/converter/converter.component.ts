@@ -1,4 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ImageUploadService } from 'src/app/services/image-upload.service';
 
 @Component({
   selector: 'app-converter',
@@ -6,6 +8,7 @@ import { Component, ElementRef } from '@angular/core';
   styleUrls: ['./converter.component.css']
 })
 export class ConverterComponent {
+  constructor(private imageUploadservice:ImageUploadService,private sanitizer:DomSanitizer) { }
   savedImage:any
   close(){
     this.savedImage=null
@@ -27,6 +30,8 @@ loadImage(img:any){
   if(file){
     reader.readAsDataURL(file)
   }
-
+  }
+sendToServer(){
+  
 }
 }

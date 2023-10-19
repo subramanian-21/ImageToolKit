@@ -6,8 +6,8 @@
             <i class="bi bi-question-circle-fill ml-3 text-2xl cursor-pointer text-white"></i>
         </div>
         <div class="w-full flex justify-center mt-5">
-            <div class="w-[300px] min-h-[250px] lg:w-[500px] lg:min-h-[400px] bg-green-500 relative flex flex-col justify-center items-center">
-                <i *ngIf="savedImage" (click) = 'close()' class="bi bi-x-circle absolute top-3 right-3 text-2xl"></i>
+            <div class="w-[300px] min-h-[250px] lg:w-[500px] lg:min-h-[400px] bg-slate-600 relative flex flex-col justify-center items-center">
+                <i *ngIf="savedImage" (click) = 'close()' class="bi bi-x-circle absolute top-3 right-3 text-white text-2xl"></i>
                 <input  type="file" id="fileInput" accept="image/*" (input)="loadImage($event)">
                 <label *ngIf="!savedImage" for="fileInput" class="label text-white">Select File...</label>
                 <img [src]="savedImage" alt="" class="w-4/5" >
@@ -15,9 +15,7 @@
         </div>
         <div class="h-5"></div>
         <label class="text-white" for="rangeInp">Set Image size %</label>
-    <input type="range" id="rangeInp" (input)="inputVal($event)">
+    <div class="flex text-white gap-2 ">0%<input type="range" id="rangeInp" (input)="inputVal($event)">100%</div>
      <button class="button-class">Convert...</button>
     </div>
 </div>
-    
-<!-- *ngFor="let item of selectOptions" [value]="item.value">{{item.name}} -->

@@ -6,11 +6,11 @@ import {HttpClient} from '@angular/common/http'
 export class ImageUploadService {
 
   constructor(private http:HttpClient) { }
-  uploadImage(image: File,format:string) {
+  uploadImage(image: File,quality:string) {
     const formData = new FormData();
     formData.append('image', image);
-    formData.append('format',format)
+    formData.append('quality',quality)
 
-    return this.http.post('http://localhost:5001/api/converter', formData,{ responseType: 'blob' });
+    return this.http.post('http://localhost:5001/api/compresser', formData,{ responseType: 'blob' });
   }
 }
