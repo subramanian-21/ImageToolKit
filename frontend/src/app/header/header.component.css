@@ -17,6 +17,9 @@
   i{
     color: white;
   }
+  .flex{
+    color: gray;
+  }
   .search-opt {
     width: 40px;
     height: 40px;
