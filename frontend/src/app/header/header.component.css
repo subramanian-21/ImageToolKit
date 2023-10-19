@@ -48,18 +48,18 @@
   
   @keyframes inputLengthInc {
     0% {
-      width: 150px;
+      width: 130px;
     }
     100% {
-      width: 200px;
+      width: 180px;
     }
   }
   @keyframes inputLengthDec {
     0% {
-      width: 200px;
+      width: 180px;
     }
     100% {
-      width: 150px;
+      width: 130px;
     }
   }
   @media (max-width: 600px) {
