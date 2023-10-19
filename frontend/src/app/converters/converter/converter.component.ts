@@ -11,7 +11,7 @@ export class ConverterComponent {
     this.savedImage=null
   }
   selectOptions:Array<any> = [
- 
+    {value:null,name:'--'},
     {value:'jpeg',name:'JPEG or JPG'},
     {value:'png',name:'PNG'},
     {value:'bmp',name:'BMP'},
