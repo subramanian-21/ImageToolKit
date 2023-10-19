@@ -10,6 +10,14 @@ export class ConverterComponent {
   close(){
     this.savedImage=null
   }
+  selectOptions:Array<any> = [
+ 
+    {value:'jpeg',name:'JPEG or JPG'},
+    {value:'png',name:'PNG'},
+    {value:'bmp',name:'BMP'},
+    {value:'gif',name:'GIF'},
+    {value:'tiff',name:'TIFF or TIF'}
+  ]
 loadImage(img:any){
   const file = img.target.files[0]
   const reader = new FileReader()

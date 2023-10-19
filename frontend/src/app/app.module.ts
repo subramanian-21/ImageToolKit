@@ -11,6 +11,7 @@ import { BodyComponent } from './body/body.component';
 import { ConverterBoxComponent } from './body/converter-box/converter-box.component';
 import { ConverterComponent } from './converters/converter/converter.component';
 import { CompresserComponent } from './converters/compresser/compresser.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CompresserComponent } from './converters/compresser/compresser.componen
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
