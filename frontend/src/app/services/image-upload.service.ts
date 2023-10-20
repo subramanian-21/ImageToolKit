@@ -12,7 +12,7 @@ export class ImageUploadService {
     formData.append('image', image);
     formData.append('format',format)
    
-    if(this.url === 'http://localhost:4200/converter'){
+    if(this.url === 'http://localhost:4200/#/converter'){
       this.serverUrl = 'http://localhost:5001/api/converter'
     }else{
       this.serverUrl = 'https://imagetoolkitserver.onrender.com/api/converter'

@@ -11,7 +11,7 @@ export class ImageCompresserService {
     const formData = new FormData();
     formData.append('image', image);
     formData.append('quality',quality)
-    if(this.url === 'http://localhost:4200/compresser'){
+    if(this.url === 'http://localhost:4200/#/compresser'){
       this.serverUrl = 'http://localhost:5001/api/compresser'
     }else{
       this.serverUrl = 'https://imagetoolkitserver.onrender.com/api/compresser'
