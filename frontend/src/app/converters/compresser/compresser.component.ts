@@ -22,9 +22,11 @@ export class CompresserComponent {
     this.savedImage=null
   }
   quality:string = ''
+  qualityCont:number = 0
   inputVal(val:any){
     this.quality = val.target.value
     console.log(this.quality)
+    this.qualityCont = Number(this.quality)*2
   }
 loadImage(img:any){
   const file = img.target.files[0]

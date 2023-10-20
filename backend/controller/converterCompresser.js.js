@@ -53,7 +53,10 @@ const converterCompresser = {
       const imageName = req.file.originalname;
       const imageSplitArray = imageName.split(".");
       const imageSplitArrayLength = imageSplitArray.length;
-      const imageFormat = imageSplitArray[imageSplitArrayLength - 1];
+      let imageFormat = imageSplitArray[imageSplitArrayLength - 1];
+      if(imageFormat === 'jpg'){
+        imageFormat = 'jpeg'
+      }
 
       const convertedImageName = `converted.${imageFormat}`;
       const convertedImagePath = "converted/" + convertedImageName;
