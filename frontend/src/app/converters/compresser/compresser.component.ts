@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ImageCompresserService } from 'src/app/services/image-compress.service';
 
 @Component({
   selector: 'app-compresser',
@@ -6,17 +8,29 @@ import { Component } from '@angular/core';
   styleUrls: ['./compresser.component.css']
 })
 export class CompresserComponent {
+
+  constructor (private imageCompresser:ImageCompresserService,private sanitizer:DomSanitizer){ }
   savedImage:any
+  format:string = ''
+  name:string = ''
+  outImage:any
+  inpImage:any
+  imageName:string = ''
+  imageFormat:string = ''
   close(){
     this.savedImage=null
   }
-  quality:number = 0
+  quality:string = ''
   inputVal(val:any){
     this.quality = val.target.value
     console.log(this.quality)
   }
 loadImage(img:any){
   const file = img.target.files[0]
+  this.imageName = file.name.split('.')[0]
+  this.imageFormat = file.name.split('.')[file.name.split('.').length -1]
+
+  console.log(this.format)
   const reader = new FileReader()
   reader.onload=()=>{
     this.savedImage = reader.result
@@ -24,6 +38,15 @@ loadImage(img:any){
   if(file){
     reader.readAsDataURL(file)
   }
+
+}
+sendToServer(){
+  this.imageCompresser.uploadImage(this.inpImage,this.quality).subscribe(res=>{
+    const imagetoblog = window.URL.createObjectURL(res)
+    this.outImage = this.sanitizer.bypassSecurityTrustResourceUrl(imagetoblog)
+    })
+}
+convertNext(){
 
 }
 }

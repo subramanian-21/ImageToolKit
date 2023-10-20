@@ -49,7 +49,7 @@ const converterCompresser = {
     try {
       const imagePath = req.file.path;
       const image = await jimp.read(imagePath);
-      const quality = req.body.quality;
+      const quality = Number(req.body.quality);
       const imageName = req.file.originalname;
       const imageSplitArray = imageName.split(".");
       const imageSplitArrayLength = imageSplitArray.length;
@@ -57,7 +57,7 @@ const converterCompresser = {
 
       const convertedImageName = `converted.${imageFormat}`;
       const convertedImagePath = "converted/" + convertedImageName;
-      await jimp.quality(quality).writeAsync(convertedImagePath);
+      await image.quality(quality).writeAsync(convertedImagePath);
       const convertedImageAbsolutePath = path.resolve(
         __dirname,
         "../converted",

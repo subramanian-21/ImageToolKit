@@ -12,11 +12,12 @@ export class ConverterComponent {
   savedImage:any
   outImage:any
   inpImage:any
+  imageName:string = ''
   close(){
     this.savedImage=null
   }
   format:string=""
-  name:string = `converted.${this.format}`
+  name:string = `${this.imageName}.${this.format}`
   setFormat(e:any){
     this.format = e.target.value
   }
@@ -30,6 +31,7 @@ export class ConverterComponent {
 loadImage(img:any){
   const file = img.target.files[0]
   this.inpImage = file
+  this.imageName = file.name.split('.')[0]
   const reader = new FileReader()
   reader.onload=()=>{
     this.savedImage = reader.result

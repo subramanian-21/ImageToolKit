@@ -2,20 +2,34 @@
     <div class="w-full lg:w-4/5  flex flex-col items-center">
         <div class="text-2xl text-white">Image Size Reducer</div>
         <div class="flex items-center px-5">
-            <div class="text-sm text-white">reduce your Image's size without reducing the quality</div>
+      <div class="text-sm text-white">reduce your Image's size without reducing the quality</div>
             <i class="bi bi-question-circle-fill ml-3 text-2xl cursor-pointer text-white"></i>
         </div>
         <div class="w-full flex justify-center mt-5">
             <div class="w-[300px] min-h-[250px] lg:w-[500px] lg:min-h-[400px] bg-slate-600 relative flex flex-col justify-center items-center">
-                <i *ngIf="savedImage" (click) = 'close()' class="bi bi-x-circle absolute top-3 right-3 text-white text-2xl"></i>
+                <i *ngIf="savedImage" (click) = 'close()' class="bi bi-x-circle absolute top-3 right-3 text-2xl text-white"></i>
                 <input  type="file" id="fileInput" accept="image/*" (input)="loadImage($event)">
                 <label *ngIf="!savedImage" for="fileInput" class="label text-white">Select File...</label>
                 <img [src]="savedImage" alt="" class="w-4/5" >
             </div>
         </div>
-        <div class="h-5"></div>
-        <label class="text-white" for="rangeInp">Set Image size %</label>
-    <div class="flex text-white gap-2 ">0%<input type="range" id="rangeInp" (input)="inputVal($event)">100%</div>
-     <button class="button-class">Convert...</button>
+    
+            <label class="text-white" for="rangeInp">Set Image size %</label>
+            <div class="flex text-white gap-2 ">0%<input type="range" id="rangeInp" (input)="inputVal($event)">100%</div>
+             <button  class="button-class">Convert...</button>
+             <button (click)="sendToServer()" [disabled]="!savedImage || !quality" [ngClass]="{'cursor-not-allowed':!savedImage || !quality}" [ngStyle]="{backgroundColor:!savedImage || !quality? 'red':'green'}" class="button-class " *ngIf="!outImage;else downloadBtn">Convert</button>
+      
+
+     <ng-template #downloadBtn clasbg-green-50s="flex justify-center items-center ">
+        <div class="flex gap-2">
+            <a [href]="outImage" [download]="name" download  class="button-class bg-red-500 flex justify-center items-center">Download</a>
+            <div (click)="convertNext()" class="button-class flex justify-center items-center bg-blue-500 cursor-pointer">Convert Next</div>
+        </div>
+      
+     </ng-template>
     </div>
+</div>
+
+<div class="h-[200px]">
+
 </div>

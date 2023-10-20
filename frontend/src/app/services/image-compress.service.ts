@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http'
 @Injectable({
   providedIn: 'root'
 })
-export class ImageUploadService {
+export class ImageCompresserService {
 
   constructor(private http:HttpClient) { }
   uploadImage(image: File,quality:string) {
