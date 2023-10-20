@@ -18,7 +18,6 @@
             <div class="flex text-white gap-2 ">0%<input type="range" max="50" min="0" id="rangeInp" (input)="inputVal($event)">100%</div>
              <button (click)="sendToServer()" [disabled]="!savedImage || !quality" [ngClass]="{'cursor-not-allowed':!savedImage || !quality}" [ngStyle]="{backgroundColor:!savedImage || !quality? 'red':'green'}" class="button-class " *ngIf="!outImage;else downloadBtn">Convert</button>
       
-
      <ng-template #downloadBtn clasbg-green-50s="flex justify-center items-center ">
         <div class="flex gap-2">
             <a [href]="outImage" [download]="name" download  class="button-class bg-red-500 flex justify-center items-center">Download</a>
