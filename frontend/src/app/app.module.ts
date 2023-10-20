@@ -12,7 +12,7 @@ import { ConverterBoxComponent } from './body/converter-box/converter-box.compon
 import { ConverterComponent } from './converters/converter/converter.component';
 import { CompresserComponent } from './converters/compresser/compresser.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
-
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +28,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

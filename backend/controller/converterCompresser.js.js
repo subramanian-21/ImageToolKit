@@ -10,7 +10,7 @@ const converterCompresser = {
 
       const convertedImageName = `converted.${toFormat}`;
       const convertedImage = "converted/" + convertedImageName;
-      await image.writeAsync(convertedImage);
+      await image.quality(60).writeAsync(convertedImage);
       const convertedImagePath = path.resolve(
         __dirname,
         "../converted",
@@ -23,19 +23,19 @@ const converterCompresser = {
           console.error("File sending error:", err);
           res.status(500).send("Error sending the file.");
         } else {
-          console.log("send successfully");
+   
           fs.unlink(convertedImagePath, (err) => {
             if (err) {
               console.log(err);
             } else {
-              console.log("deleted converted");
+          
             }
           });
           fs.unlink(imagePath, (err) => {
             if (err) {
               console.log(err);
             } else {
-              console.log("deleted upload");
+
             }
           });
         }

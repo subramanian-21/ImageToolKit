@@ -15,16 +15,23 @@
         </div>
         <div class="h-5"></div>
     <label class="select-label" for="select">Select Format to be converted </label>
-     <select class="select-tag" id="select" (input)="setFormat($event)">
-        <option *ngFor="let item of selectOptions" [value]="item.value">{{item.name}}</option>
+     <select [(ngModel)]="format" class="select-tag" id="select" (input)="setFormat($event)">
+        <option  *ngFor="let item of selectOptions" [value]="item.value">{{item.name}}</option>
      </select>
      <button (click)="sendToServer()" [disabled]="!savedImage || !format" [ngClass]="{'cursor-not-allowed':!savedImage || !format}" [ngStyle]="{backgroundColor:!savedImage || !format? 'red':'green'}" class="button-class " *ngIf="!outImage;else downloadBtn">Convert</button>
 
-     <ng-template #downloadBtn clasbg-green-50s="flex justify-center items-center">
-        <a [href]="outImage" [download]="name" download (click)="downloadImage()" class="button-class bg-red-500 flex justify-center items-center">Download</a>
+     <ng-template #downloadBtn clasbg-green-50s="flex justify-center items-center ">
+        <div class="flex gap-2">
+            <a [href]="outImage" [download]="name" download  class="button-class bg-red-500 flex justify-center items-center">Download</a>
+            <div (click)="convertNext()" class="button-class flex justify-center items-center bg-blue-500 cursor-pointer">Convert Next</div>
+        </div>
+      
      </ng-template>
     </div>
 </div>
 
+<div class="h-[200px]">
+
+</div>
     
 <!-- *ngFor="let item of selectOptions" [value]="item.value">{{item.name}} -->

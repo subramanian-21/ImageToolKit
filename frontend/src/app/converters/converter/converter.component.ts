@@ -21,7 +21,6 @@ export class ConverterComponent {
     this.format = e.target.value
   }
   selectOptions:Array<any> = [
-    {value:null,name:'--'},
     {value:'jpeg',name:'JPEG or JPG'},
     {value:'png',name:'PNG'},
     {value:'bmp',name:'BMP'},
@@ -45,7 +44,10 @@ sendToServer(){
        this.outImage = this.sanitizer.bypassSecurityTrustResourceUrl(imagetoblog)
        })
 }
-downloadImage(){
-
+convertNext(){
+  this.savedImage = null
+  this.outImage = null
+  this.inpImage = null
+  this.format = ''
 }
 }
