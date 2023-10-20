@@ -12,11 +12,12 @@ export class CompresserComponent {
   constructor (private imageCompresser:ImageCompresserService,private sanitizer:DomSanitizer){ }
   savedImage:any
   format:string = ''
-  name:string = ''
+
   outImage:any
   inpImage:any
   imageName:string = ''
   imageFormat:string = ''
+  name:string = `${this.imageName}.${this.imageFormat}`
   close(){
     this.savedImage=null
   }
@@ -27,6 +28,7 @@ export class CompresserComponent {
   }
 loadImage(img:any){
   const file = img.target.files[0]
+  this.inpImage = file
   this.imageName = file.name.split('.')[0]
   this.imageFormat = file.name.split('.')[file.name.split('.').length -1]
 
