@@ -18,16 +18,8 @@ export class GrayscaleComponent {
   }
   format:string=""
   name:string = `${this.imageName}.${this.format}`
-  setFormat(e:any){
-    this.format = e.target.value
-  }
-  selectOptions:Array<any> = [
-    {value:'jpeg',name:'JPEG or JPG'},
-    {value:'png',name:'PNG'},
-    {value:'bmp',name:'BMP'},
-    {value:'gif',name:'GIF'},
-    {value:'tiff',name:'TIFF or TIF'}
-  ]
+ 
+
 loadImage(img:any){
   const file = img.target.files[0]
   this.inpImage = file

@@ -51,6 +51,10 @@ sendToServer(){
     })
 }
 convertNext(){
-
+this.outImage = null
+this.savedImage = null
+this.quality = ""
+this.inpImage = null
+this.name = ""
 }
 }
