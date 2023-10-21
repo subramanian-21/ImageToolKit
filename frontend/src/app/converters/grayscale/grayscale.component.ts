@@ -25,6 +25,8 @@ loadImage(img:any){
   const file = img.target.files[0]
   this.inpImage = file
   this.imageName = file.name.split('.')[0]
+  this.format = file.name.split('.')[1]
+  
   const reader = new FileReader()
   reader.onload=()=>{
     this.savedImage = reader.result

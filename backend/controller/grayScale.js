@@ -8,7 +8,7 @@ try {
     const image = await jimp.read(imagePath);
     const imageFormat = req.file.originalname.split('.')[1]
     const convertedImageName = `converted.${imageFormat}`
-    const convertedImage = `converted`+convertedImageName
+    const convertedImage = `converted/`+convertedImageName
     await image.quality(60).grayscale().writeAsync(convertedImage)
     const convertedImagePath = path.resolve(
         __dirname,
