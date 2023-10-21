@@ -18,9 +18,9 @@ export class BodyComponent {
       desc : 'Compress your Images with High Quality'
     },
     {
-      name : 'Image Tone Modifier',
-      link : '/tone',
-      desc : 'Change Image\'s Brightness, Contrast, Sharpness, ...'
+      name : 'Color to Black & White',
+      link : '/grayscale',
+      desc : 'Transform Your Color Images to GrayScale'
     },
   ]    
 }

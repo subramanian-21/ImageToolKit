@@ -14,6 +14,7 @@ import { CompresserComponent } from './converters/compresser/compresser.componen
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { FormsModule } from '@angular/forms';
 import { ImagesComponent } from './images/images.component';
+import { GrayscaleComponent } from './converters/grayscale/grayscale.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { ImagesComponent } from './images/images.component';
     ConverterBoxComponent,
     ConverterComponent,
     CompresserComponent,
-    ImagesComponent
+    ImagesComponent,
+    GrayscaleComponent
   ],
   imports: [
     BrowserModule,

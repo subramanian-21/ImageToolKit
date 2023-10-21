@@ -4,12 +4,14 @@ import { BodyComponent } from './body/body.component';
 import { ConverterComponent } from './converters/converter/converter.component';
 import { CompresserComponent } from './converters/compresser/compresser.component';
 import { ImagesComponent } from './images/images.component';
+import { GrayscaleComponent } from './converters/grayscale/grayscale.component';
 
 const routes: Routes = [
   {path:'',component:BodyComponent},
   {path:'converter',component:ConverterComponent},
   {path:'compresser',component:CompresserComponent},
-  {path:'image',component:ImagesComponent}
+  {path:'image',component:ImagesComponent},
+  {path:'grayscale',component:GrayscaleComponent}
 ];
 
 @NgModule({
