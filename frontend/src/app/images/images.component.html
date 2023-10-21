@@ -1,8 +1,10 @@
 <div class="w-full flex justify-center">
-    <div class="w-4/5 flex justify-center gap-3 flex-wrap" >
-        <div class="" *ngIf="allImages.length>0; else nothing">
+    <div class="w-4/5 flex justify-center" >
+        <div class="flex justify-center gap-3 flex-wrap" *ngIf="allImages.length>0; else nothing ">
             <div *ngFor="let item of allImages">
-                <img [src]="item" alt="" class="w-[300px]">
+               <div  class="w-[300px]">
+                <a [href]="item" download="converted"><img [src]="item" alt="" class="w-full"></a>
+               </div> 
             </div>
         </div>
        
