@@ -8,4 +8,11 @@ import { AllImagesService } from '../services/all-images.service';
 })
 export class ImagesComponent {
   constructor(private ImageService:AllImagesService){}
+  allImages:Array<File> = []
+  ngOninit(){
+    this.loadImage()
+  }
+  loadImage(){
+    this.allImages = this.ImageService.converts
+  }
 }
