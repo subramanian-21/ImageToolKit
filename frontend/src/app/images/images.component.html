@@ -1,7 +1,13 @@
 <div class="w-full flex justify-center">
     <div class="w-4/5 flex justify-center gap-3 flex-wrap" >
-        <div *ngFor="let item of allImages">
-            <img [src]="item" alt="" class="w-[300px]">
+        <div class="" *ngIf="allImages.length>0; else nothing">
+            <div *ngFor="let item of allImages">
+                <img [src]="item" alt="" class="w-[300px]">
+            </div>
         </div>
+       
     </div>
 </div>
+<ng-template #nothing>
+    <div class="w-full min-h-[80vh] text-4xl text-white flex justify-center items-center">Nothing Found</div>
+</ng-template>
