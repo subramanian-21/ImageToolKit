@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AllImagesService } from 'src/app/services/all-images.service';
 import { ImageCompresserService } from 'src/app/services/image-compress.service';
 
 @Component({
@@ -45,10 +46,12 @@ loadImage(img:any){
 
 }
 sendToServer(){
+  const converts = new AllImagesService
   this.imageCompresser.uploadImage(this.inpImage,this.quality).subscribe(res=>{
     const imagetoblog = window.URL.createObjectURL(res)
     this.outImage = this.sanitizer.bypassSecurityTrustResourceUrl(imagetoblog)
     })
+    converts.addConverts(this.outImage)
 }
 convertNext(){
 this.outImage = null

@@ -1,5 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AllImagesService } from 'src/app/services/all-images.service';
 import { ImageUploadService } from 'src/app/services/image-upload.service';
 
 @Component({
@@ -41,10 +42,13 @@ loadImage(img:any){
   }
   }
 sendToServer(){
+  const converts = new AllImagesService
   this.imageUploadservice.uploadImage(this.inpImage,this.format).subscribe(res=>{
        const imagetoblog = window.URL.createObjectURL(res)
        this.outImage = this.sanitizer.bypassSecurityTrustResourceUrl(imagetoblog)
        })
+      
+  converts.addConverts(this.outImage)
 }
 convertNext(){
   this.savedImage = null

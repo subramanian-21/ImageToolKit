@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AllImagesService } from 'src/app/services/all-images.service';
 import { GrayscaleService } from 'src/app/services/grayscale.service';
 import { ImageUploadService } from 'src/app/services/image-upload.service';
 
@@ -26,7 +27,7 @@ loadImage(img:any){
   this.inpImage = file
   this.imageName = file.name.split('.')[0]
   this.format = file.name.split('.')[1]
-  
+
   const reader = new FileReader()
   reader.onload=()=>{
     this.savedImage = reader.result
@@ -36,10 +37,12 @@ loadImage(img:any){
   }
   }
 sendToServer(){
+  const converts = new AllImagesService
   this.imageUploadservice.uploadImage(this.inpImage).subscribe(res=>{
        const imagetoblog = window.URL.createObjectURL(res)
        this.outImage = this.sanitizer.bypassSecurityTrustResourceUrl(imagetoblog)
        })
+    converts.addConverts(this.outImage)
 }
 convertNext(){
   this.savedImage = null

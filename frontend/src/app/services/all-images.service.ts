@@ -6,4 +6,9 @@ import { Injectable } from '@angular/core';
 export class AllImagesService {
 
   constructor() { }
+  converts:Array<any> = []
+
+  addConverts(image:File){
+    this.converts.push(image)
+  }
 }
