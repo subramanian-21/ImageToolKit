@@ -9,7 +9,7 @@ import { ImageUploadService } from 'src/app/services/image-upload.service';
   styleUrls: ['./converter.component.css']
 })
 export class ConverterComponent {
-  constructor(private imageUploadservice:ImageUploadService,private sanitizer:DomSanitizer) { }
+  constructor(private imageUploadservice:ImageUploadService,private sanitizer:DomSanitizer,private allImagesService: AllImagesService) { }
   savedImage:any
   outImage:any
   inpImage:any
@@ -42,13 +42,16 @@ loadImage(img:any){
   }
   }
 sendToServer(){
-  const converts = new AllImagesService
+  
   this.imageUploadservice.uploadImage(this.inpImage,this.format).subscribe(res=>{
        const imagetoblog = window.URL.createObjectURL(res)
        this.outImage = this.sanitizer.bypassSecurityTrustResourceUrl(imagetoblog)
-       })
+       
+       this.allImagesService.addConverts(this.outImage)
+       console.log(this.allImagesService.converts)
+    })
       
-  converts.addConverts(this.outImage)
+
 }
 convertNext(){
   this.savedImage = null

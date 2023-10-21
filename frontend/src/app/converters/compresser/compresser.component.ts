@@ -10,7 +10,7 @@ import { ImageCompresserService } from 'src/app/services/image-compress.service'
 })
 export class CompresserComponent {
 
-  constructor (private imageCompresser:ImageCompresserService,private sanitizer:DomSanitizer){ }
+  constructor (private imageCompresser:ImageCompresserService,private sanitizer:DomSanitizer,private allImagesService: AllImagesService){ }
   savedImage:any
   format:string = ''
 
@@ -46,12 +46,13 @@ loadImage(img:any){
 
 }
 sendToServer(){
-  const converts = new AllImagesService
+  
   this.imageCompresser.uploadImage(this.inpImage,this.quality).subscribe(res=>{
     const imagetoblog = window.URL.createObjectURL(res)
     this.outImage = this.sanitizer.bypassSecurityTrustResourceUrl(imagetoblog)
+    this.allImagesService.addConverts(this.outImage)
     })
-    converts.addConverts(this.outImage)
+ 
 }
 convertNext(){
 this.outImage = null

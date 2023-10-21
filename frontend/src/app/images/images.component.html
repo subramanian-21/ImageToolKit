@@ -1,7 +1,7 @@
 <div class="w-full flex justify-center">
-    <div class="w-4/5 h-5">
+    <div class="w-4/5 flex justify-center gap-3 flex-wrap" >
         <div *ngFor="let item of allImages">
-            <img [src]="item" alt="">
+            <img [src]="item" alt="" class="w-[300px]">
         </div>
     </div>
 </div>

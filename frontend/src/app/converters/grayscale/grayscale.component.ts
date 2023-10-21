@@ -10,7 +10,7 @@ import { ImageUploadService } from 'src/app/services/image-upload.service';
   styleUrls: ['./grayscale.component.css']
 })
 export class GrayscaleComponent {
-  constructor(private imageUploadservice:GrayscaleService,private sanitizer:DomSanitizer) { }
+  constructor(private imageUploadservice:GrayscaleService,private sanitizer:DomSanitizer,private allImagesService: AllImagesService) { }
   savedImage:any
   outImage:any
   inpImage:any
@@ -37,12 +37,13 @@ loadImage(img:any){
   }
   }
 sendToServer(){
-  const converts = new AllImagesService
+  
   this.imageUploadservice.uploadImage(this.inpImage).subscribe(res=>{
        const imagetoblog = window.URL.createObjectURL(res)
        this.outImage = this.sanitizer.bypassSecurityTrustResourceUrl(imagetoblog)
+       this.allImagesService.addConverts(this.outImage)
        })
-    converts.addConverts(this.outImage)
+   
 }
 convertNext(){
   this.savedImage = null
