@@ -17,6 +17,10 @@ Effortlessly reduce the size of your images without compromising their quality. 
 ### 3. Gray Scale Converter
 Transform color images into classic black and white with the grayscale converter. This feature can be useful for creating artistic effects or enhancing the readability of certain images.
 
+### 4. Image Gallery
+
+Explore and manage all your converted images in the Image Gallery. Every image you convert and save will be stored in the Gallery for your convenience. You can view, download, and manage your converted images at any time.
+
 ## Live Demo
 
 You can experience ImageToolKit in action by visiting our live demo at [imagetoolkitapp.onrender.com](https://imagetoolkitapp.onrender.com).
