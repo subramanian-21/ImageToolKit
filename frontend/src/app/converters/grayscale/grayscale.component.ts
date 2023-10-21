@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { GrayscaleService } from 'src/app/services/grayscale.service';
 import { ImageUploadService } from 'src/app/services/image-upload.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ImageUploadService } from 'src/app/services/image-upload.service';
   styleUrls: ['./grayscale.component.css']
 })
 export class GrayscaleComponent {
-  constructor(private imageUploadservice:ImageUploadService,private sanitizer:DomSanitizer) { }
+  constructor(private imageUploadservice:GrayscaleService,private sanitizer:DomSanitizer) { }
   savedImage:any
   outImage:any
   inpImage:any
@@ -33,7 +34,7 @@ loadImage(img:any){
   }
   }
 sendToServer(){
-  this.imageUploadservice.uploadImage(this.inpImage,this.format).subscribe(res=>{
+  this.imageUploadservice.uploadImage(this.inpImage).subscribe(res=>{
        const imagetoblog = window.URL.createObjectURL(res)
        this.outImage = this.sanitizer.bypassSecurityTrustResourceUrl(imagetoblog)
        })
@@ -42,6 +43,6 @@ convertNext(){
   this.savedImage = null
   this.outImage = null
   this.inpImage = null
-  this.format = ''
+
 }
 }

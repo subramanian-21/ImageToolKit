@@ -15,7 +15,7 @@
         </div>
         <div class="h-5"></div>
   
-     <button (click)="sendToServer()" [disabled]="!savedImage || !format" [ngClass]="{'cursor-not-allowed':!savedImage || !format}" [ngStyle]="{backgroundColor:!savedImage || !format? 'red':'green'}" class="button-class " *ngIf="!outImage;else downloadBtn">Convert</button>
+     <button (click)="sendToServer()" [disabled]="!savedImage" [ngClass]="{'cursor-not-allowed':!savedImage}" [ngStyle]="{backgroundColor:!savedImage? 'red':'green'}" class="button-class " *ngIf="!outImage;else downloadBtn">Convert</button>
 
      <ng-template #downloadBtn clasbg-green-50s="flex justify-center items-center ">
         <div class="flex gap-2">
