@@ -12,6 +12,7 @@ const converterCompresser = {
       const convertedImage = "converted/" + convertedImageName;
       await image.quality(60).writeAsync(convertedImage);
       const convertedImagePath = path.resolve(
+        
         __dirname,
         "../converted",
         convertedImageName

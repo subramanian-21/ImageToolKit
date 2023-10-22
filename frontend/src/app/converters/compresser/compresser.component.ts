@@ -19,6 +19,7 @@ export class CompresserComponent {
   imageName:string = ''
   imageFormat:string = ''
   name:string = `${this.imageName}.${this.imageFormat}`
+  loading:boolean = false
   close(){
     this.savedImage=null
   }
@@ -46,11 +47,17 @@ loadImage(img:any){
 
 }
 sendToServer(){
+  this.loading = true
+  if(this.format === 'jpg'){
+    this.format = 'jpeg'
+  }
   
   this.imageCompresser.uploadImage(this.inpImage,this.quality).subscribe(res=>{
     const imagetoblog = window.URL.createObjectURL(res)
     this.outImage = this.sanitizer.bypassSecurityTrustResourceUrl(imagetoblog)
     this.allImagesService.addConverts(this.outImage)
+    this.loading =false
+    
     })
  
 }

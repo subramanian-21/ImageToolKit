@@ -15,6 +15,7 @@ export class GrayscaleComponent {
   outImage:any
   inpImage:any
   imageName:string = ''
+  loading:boolean = false
   close(){
     this.savedImage=null
   }
@@ -37,11 +38,16 @@ loadImage(img:any){
   }
   }
 sendToServer(){
+  this.loading =true
+  if(this.format === 'jpg'){
+    this.format = 'jpeg'
+  }
   
   this.imageUploadservice.uploadImage(this.inpImage).subscribe(res=>{
        const imagetoblog = window.URL.createObjectURL(res)
        this.outImage = this.sanitizer.bypassSecurityTrustResourceUrl(imagetoblog)
        this.allImagesService.addConverts(this.outImage)
+       this.loading =false
        })
    
 }

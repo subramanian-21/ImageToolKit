@@ -16,7 +16,11 @@
     <div class="h-[10px]"></div>
             <label class="text-white" for="rangeInp">Set Image size => {{ qualityCont }} %</label>
             <div class="flex text-white gap-2 ">0%<input type="range" max="50" min="0" id="rangeInp" (input)="inputVal($event)">100%</div>
-             <button (click)="sendToServer()" [disabled]="!savedImage || !quality" [ngClass]="{'cursor-not-allowed':!savedImage || !quality}" [ngStyle]="{backgroundColor:!savedImage || !quality? 'red':'green'}" class="button-class " *ngIf="!outImage;else downloadBtn">Convert</button>
+             <button (click)="sendToServer()" [disabled]="!savedImage || !quality" [ngClass]="{'cursor-not-allowed':!savedImage || !quality}" [ngStyle]="{backgroundColor:!savedImage || !quality? 'red':'green'}" class="button-class flex justify-center items-center relative" *ngIf="!outImage;else downloadBtn">Convert
+                <div *ngIf="loading" class="w-7 h-7 bg-white absolute right-2 flex justify-center items-center rounded-full">
+                    <svg class="animate-spin h-5 w-5 bg-black text-white "></svg>
+                </div> 
+             </button>
       
      <ng-template #downloadBtn clasbg-green-50s="flex justify-center items-center ">
         <div class="flex gap-2">
