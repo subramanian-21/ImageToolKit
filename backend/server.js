@@ -5,6 +5,6 @@ app.use(cors())
 
 app.use('/api',require('./router/allRoutes'))
 
-app.listen(5001,()=>{
+app.listen(5000,()=>{
     console.log('Server@5000')
 })

@@ -1,16 +1,17 @@
 const jimp = require("jimp");
 const path = require("path");
+const sharp = require('sharp')
 const fs = require("fs");
 const converterCompresser = {
   converter: async (req, res) => {
     try {
       const imagePath = req.file.path;
-      const image = await jimp.read(imagePath);
+      const image = sharp(imagePath);
       const toFormat = req.body.format;
 
       const convertedImageName = `converted.${toFormat}`;
       const convertedImage = "converted/" + convertedImageName;
-      await image.quality(60).writeAsync(convertedImage);
+      await image.withMetadata().toFile(convertedImage);
       const convertedImagePath = path.resolve(
         
         __dirname,
@@ -49,19 +50,26 @@ const converterCompresser = {
   compresser: async (req, res) => {
     try {
       const imagePath = req.file.path;
-      const image = await jimp.read(imagePath);
+      const image = sharp(imagePath);
       const quality = Number(req.body.quality);
       const imageName = req.file.originalname;
       const imageSplitArray = imageName.split(".");
       const imageSplitArrayLength = imageSplitArray.length;
       let imageFormat = imageSplitArray[imageSplitArrayLength - 1];
-      if(imageFormat === 'jpg'){
-        imageFormat = 'jpeg'
+      if(imageFormat === 'jpg' || imageFormat === 'jpeg'){
+       image.jpeg({quality:quality}).withMetadata()
+      }
+      if(imageFormat === 'png'){
+        image.png({quality:9-Math.floor(quality/10)}).withMetadata()
+      }
+
+      if(imageFormat === 'gif'){
+        image.gif({quality:quality}).withMetadata()
       }
 
       const convertedImageName = `converted.${imageFormat}`;
       const convertedImagePath = "converted/" + convertedImageName;
-      await image.quality(quality).writeAsync(convertedImagePath);
+      await image.toFile(convertedImagePath);
       const convertedImageAbsolutePath = path.resolve(
         __dirname,
         "../converted",
