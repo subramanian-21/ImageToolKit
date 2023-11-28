@@ -13,7 +13,6 @@ const converterCompresser = {
       const convertedImage = "converted/" + convertedImageName;
       await image.withMetadata().toFile(convertedImage);
       const convertedImagePath = path.resolve(
-        
         __dirname,
         "../converted",
         convertedImageName
