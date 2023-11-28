@@ -2,6 +2,7 @@ const jimp = require("jimp");
 const path = require("path");
 const sharp = require('sharp')
 const fs = require("fs");
+const fetch = require('fetch')
 const converterCompresser = {
   converter: async (req, res) => {
     try {
