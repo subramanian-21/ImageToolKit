@@ -27,7 +27,6 @@ export class ConverterComponent {
     {value:'jpeg',name:'JPEG or JPG'},
     {value:'png',name:'PNG'},
     {value:'bmp',name:'BMP'},
-    {value:'gif',name:'GIF'},
     {value:'tiff',name:'TIFF or TIF'}
   ]
 loadImage(img:any){
