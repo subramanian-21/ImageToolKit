@@ -10,28 +10,24 @@ const converterCompresser = {
 
       const convertedImageName = `converted.${toFormat}`;
       const convertedImage = "converted/" + convertedImageName;
-      const image = await jimp.read(imagePath);
-      const imageFormat = req.file.originalname.split('.')[1]
 
-   
-      await image.quality(60).writeAsync(convertedImage)
+      const resizedImage = sharp(imagePath);
+      await resizedImage.withMetadata().toFile(convertedImage);
       const convertedImagePath = path.resolve(
           __dirname,
           "../converted",
           convertedImageName
         );
-        res.set("Content-Type", `image/${imageFormat}`);
+        res.set("Content-Type", `image/${toFormat}`);
         res.sendFile(convertedImagePath, (err) => {
           if (err) {
             console.error("File sending error:", err);
             res.status(500).send("Error sending the file.");
           } else {
-     
               fs.unlink(convertedImagePath, (err) => {
                   if (err) {
                     console.log(err);
                   } else {
-                
                   }
                 });
                 fs.unlink(imagePath, (err) => {
@@ -53,18 +49,30 @@ const converterCompresser = {
      
       const quality = Number(req.body.quality);
       const imagePath = req.file.path;
-      const image = await jimp.read(imagePath);
-      const imageFormat = req.file.originalname.split('.')[1]
-      const convertedImageName = `converted.${imageFormat}`
+      const format = req.file.originalname.split('.')[1]
+      const convertedImageName = `converted.${format}`
       const convertedImage = `converted/`+convertedImageName
    
-      await image.quality(quality).writeAsync(convertedImage)
+     
+      const resizedImage = sharp(imagePath);
+      if (format === "jpg" || format === "jpeg") {
+        resizedImage.jpeg({ quality: quality });
+      } else if (format === "png") {
+        resizedImage.png({ quality: 9-Math.floor(quality/10) });
+      } else if (format === "webp") {
+        resizedImage.webp({ quality: quality });
+      } else if (format === "gif") {
+        resizedImage.gif({ quality: quality });
+      } else {
+        console.log("format error");
+      }
+      await resizedImage.withMetadata().toFile(convertedImage);
       const convertedImagePath = path.resolve(
           __dirname,
           "../converted",
           convertedImageName
         );
-        res.set("Content-Type", `image/${imageFormat}`);
+        res.set("Content-Type", `image/${format}`);
         res.sendFile(convertedImagePath, (err) => {
           if (err) {
             console.error("File sending error:", err);

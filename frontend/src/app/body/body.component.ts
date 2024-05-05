@@ -22,5 +22,20 @@ export class BodyComponent {
       link : '/grayscale',
       desc : 'Transform Your Color Images to GrayScale'
     },
+    {
+      name : 'Resize your Image',
+      link : '/resize',
+      desc : 'Resize your image based on your preference'
+    },
+    {
+      name : 'Images to PDF',
+      link : '/imgs2pdf',
+      desc : 'Convert array of images to PDF'
+    },
+    {
+      name : 'PDF to Images',
+      link : '/pdf2imgs',
+      desc : 'Convert PDF to array of images'
+    },
   ]    
 }

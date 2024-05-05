@@ -5,17 +5,18 @@ import { ConverterComponent } from './converters/converter/converter.component';
 import { CompresserComponent } from './converters/compresser/compresser.component';
 import { ImagesComponent } from './images/images.component';
 import { GrayscaleComponent } from './converters/grayscale/grayscale.component';
-
+import { ResizeComponent } from './converters/resize/resize.component';
 const routes: Routes = [
-  {path:'',component:BodyComponent},
-  {path:'converter',component:ConverterComponent},
-  {path:'compresser',component:CompresserComponent},
-  {path:'image',component:ImagesComponent},
-  {path:'grayscale',component:GrayscaleComponent}
+  { path: '', component: BodyComponent },
+  { path: 'converter', component: ConverterComponent },
+  { path: 'compresser', component: CompresserComponent },
+  { path: 'image', component: ImagesComponent },
+  { path: 'grayscale', component: GrayscaleComponent },
+  { path: 'resize', component: ResizeComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{ useHash: true })],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

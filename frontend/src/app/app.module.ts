@@ -15,6 +15,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { FormsModule } from '@angular/forms';
 import { ImagesComponent } from './images/images.component';
 import { GrayscaleComponent } from './converters/grayscale/grayscale.component';
+import { ResizeComponent } from './converters/resize/resize.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { GrayscaleComponent } from './converters/grayscale/grayscale.component';
     ConverterComponent,
     CompresserComponent,
     ImagesComponent,
-    GrayscaleComponent
+    GrayscaleComponent,
+    ResizeComponent
   ],
   imports: [
     BrowserModule,

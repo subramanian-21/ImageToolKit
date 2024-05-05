@@ -1,0 +1,110 @@
+<div class="w-full flex justify-center">
+  <div class="w-full lg:w-4/5 flex flex-col items-center">
+    <div class="text-2xl text-white">Image Resizer</div>
+    <div class="flex items-center px-5">
+      <div class="text-sm text-white">
+        Convert your image to any prefferred format
+      </div>
+      <i
+        class="bi bi-question-circle-fill ml-3 text-2xl cursor-pointer text-white"
+      ></i>
+    </div>
+    <div class="w-full flex justify-center mt-5">
+      <div
+        class="w-[300px] min-h-[250px] lg:w-[500px] lg:min-h-[400px] bg-slate-600 relative flex flex-col justify-center items-center"
+      >
+        <i
+          *ngIf="savedImage"
+          (click)="close()"
+          class="bi bi-x-circle absolute top-3 right-3 text-2xl text-white"
+        ></i>
+        <input
+          type="file"
+          id="fileInput"
+          accept="image/*"
+          (input)="loadImage($event)"
+        />
+        <label *ngIf="!savedImage" for="fileInput" class="label text-white"
+          >Select File...</label
+        >
+        <img [src]="savedImage" alt="" class="w-4/5" />
+      </div>
+    </div>
+    <div class="h-5"></div>
+    <div class="flex gap-5">
+      <div class="flex flex-col">
+        <label class="select-label" for="select"
+          >Select Aspect Ratio
+        </label>
+        <select
+          [(ngModel)]="format"
+          class="select-tag"
+          id="select"
+          (input)="setFormat($event)"
+        >
+          <option *ngFor="let item of selectOptions" [value]="item.value">
+            {{ item.name }}
+          </option>
+        </select>
+      </div>
+      <div class="flex justify-center items-center gap-2">
+        <input type="checkbox" id="ratio" class="w-4 h-4" [checked]="lock" (change)="setLock()"/>
+        <label for="ratio" class="text-white font-bold text-sm">Lock Aspect Ratio</label>
+      </div>
+    </div>
+
+    <div *ngIf="format === 'custom'" class="flex my-4 gap-2">
+      <div class="flex flex-col px-1">
+        <label for="width" class="text-white font-bold text-sm">Width</label>
+        <input id="width" (input)="setWidth($event)" type="number" max="2048" class="w-[100px] px-1" />
+      </div>
+      <div class="flex flex-col px-1">
+        <label for="height" class="text-white font-bold text-sm">Height</label>
+        <input id="height" (input)="setHeight($event)" type="number" max="1080" class="w-[100px] px-1" />
+      </div>
+    </div>
+    <button
+      (click)="sendToServer()"
+      [disabled]="!savedImage || width === 0 || height === 0  || loading"
+      [ngClass]="{ 'cursor-not-allowed': !savedImage || width === 0 || height === 0 || loading }"
+      [ngStyle]="{
+        backgroundColor: !savedImage || width === 0 || height === 0  || loading ? 'red' : 'green'
+      }"
+      class="button-class flex justify-center items-center relative"
+      *ngIf="!outImage; else downloadBtn"
+    >
+      {{ loading ? "loading.." : "convert" }}
+      <div
+        *ngIf="loading"
+        class="w-7 h-7 bg-white absolute right-2 flex justify-center items-center rounded-full"
+      >
+        <svg class="animate-spin h-5 w-5 bg-black text-white"></svg>
+      </div>
+    </button>
+
+    <ng-template
+      #downloadBtn
+      clasbg-green-50s="flex justify-center items-center "
+    >
+      <div class="flex gap-2">
+        <a
+          [href]="outImage"
+          [download]="name"
+          download
+          class="button-class bg-red-500 flex justify-center items-center"
+          >Download</a
+        >
+        <div
+          (click)="convertNext()"
+          class="button-class flex justify-center items-center bg-blue-500 cursor-pointer"
+        >
+          Convert Next
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+<div class="h-[200px]"></div>
+
+<!-- *ngFor="let item of selectOptions" [value]="item.value">{{item.name}} -->
