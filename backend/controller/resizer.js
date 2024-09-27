@@ -15,7 +15,7 @@ const resizer = async (req, res) => {
 
     const resizedImage = sharp(imagePath);
     if (lock) {
-      
+            
       const imageMetadata = await resizedImage.metadata();
       const imageAspectRatio = imageMetadata.width / imageMetadata.height;
       let reWidth,reHeight;

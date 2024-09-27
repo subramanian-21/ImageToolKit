@@ -6,6 +6,7 @@ import { CompresserComponent } from './converters/compresser/compresser.componen
 import { ImagesComponent } from './images/images.component';
 import { GrayscaleComponent } from './converters/grayscale/grayscale.component';
 import { ResizeComponent } from './converters/resize/resize.component';
+import { Imgs2pdfComponent } from './converters/imgs2pdf/imgs2pdf.component';
 const routes: Routes = [
   { path: '', component: BodyComponent },
   { path: 'converter', component: ConverterComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'image', component: ImagesComponent },
   { path: 'grayscale', component: GrayscaleComponent },
   { path: 'resize', component: ResizeComponent },
+  { path: 'imgs2pdf', component:Imgs2pdfComponent }
 ];
 
 @NgModule({

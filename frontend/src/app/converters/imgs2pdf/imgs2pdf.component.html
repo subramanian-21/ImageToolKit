@@ -1,0 +1,86 @@
+<div class="w-full flex justify-center">
+  <div class="w-full lg:w-4/5 flex flex-col items-center">
+    <div class="text-2xl text-white">Images2PDF</div>
+    <div class="flex items-center px-5">
+      <div class="text-sm text-white">
+        Convert set of images to PDF
+      </div>
+      <i
+        class="bi bi-question-circle-fill ml-3 text-2xl cursor-pointer text-white"
+      ></i>
+    </div>
+    <div class="w-full flex justify-center mt-5">
+      <div
+        class="w-[300px] min-h-[250px] lg:w-[500px] lg:min-h-[400px] bg-slate-600 relative flex flex-col justify-center items-center"
+      >
+        
+        <input
+          type="file"
+          id="fileInput"
+          accept="image/*"
+          multiple
+          (input)="loadImage($event)"
+        />
+
+        <label for="fileInput" class="label text-white"
+          >Select File...</label>
+          <i
+          *ngIf="savedImage.length>0"
+          (click)="close()"
+          class="bi bi-x-circle absolute  right-3 text-2xl text-white"
+        ></i>
+        <div class="mt-4 border-dashed flex flex-wrap w-4/5 border-2 border-white h-[200px]">
+            <div class=" m-2 " *ngFor="let item of savedImage">
+            <img [src]="item" alt="" class="w-[70px]" />
+
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="h-5"></div>
+    <div class="flex gap-5">
+  
+    <button
+      [disabled]="savedImage.length===0"
+      [ngClass]="{ 'cursor-not-allowed': savedImage.length === 0}"
+      [ngStyle]="{
+        backgroundColor: savedImage.length === 0 ? 'red' : 'green'
+      }"
+      class="button-class flex justify-center items-center relative"
+      *ngIf="!outImage; else downloadBtn"
+    >
+      {{ loading ? "loading.." : "convert" }}
+      <div
+        *ngIf="loading"
+        class="w-7 h-7 bg-white absolute right-2 flex justify-center items-center rounded-full"
+      >
+        <svg class="animate-spin h-5 w-5 bg-black text-white"></svg>
+      </div>
+    </button>
+
+    <ng-template
+      #downloadBtn
+      clasbg-green-50s="flex justify-center items-center "
+    >
+      <div class="flex gap-2">
+        <a
+          [href]="outImage"
+          [download]="name"
+          download
+          class="button-class bg-red-500 flex justify-center items-center"
+          >Download</a
+        >
+        <div
+       
+          class="button-class flex justify-center items-center bg-blue-500 cursor-pointer"
+        >
+          Convert Next
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+<div class="h-[200px]"></div>
+
+<!-- *ngFor="let item of selectOptions" [value]="item.value">{{item.name}} -->

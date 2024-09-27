@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { ImagesComponent } from './images/images.component';
 import { GrayscaleComponent } from './converters/grayscale/grayscale.component';
 import { ResizeComponent } from './converters/resize/resize.component';
+import { Imgs2pdfComponent } from './converters/imgs2pdf/imgs2pdf.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { ResizeComponent } from './converters/resize/resize.component';
     CompresserComponent,
     ImagesComponent,
     GrayscaleComponent,
-    ResizeComponent
+    ResizeComponent,
+    Imgs2pdfComponent
   ],
   imports: [
     BrowserModule,
