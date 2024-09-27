@@ -1,7 +1,7 @@
 const path = require("path");
 const sharp = require('sharp')
 const fs = require("fs");
-export const CompressorController = async (req, res) => {
+const Compressor = async (req, res) => {
  
     try {
      
@@ -58,4 +58,4 @@ export const CompressorController = async (req, res) => {
       res.status(500).send("Image conversion failed.");
     }
 };
-module.exports = converterCompresser;
+module.exports = Compressor;

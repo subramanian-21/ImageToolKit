@@ -1,7 +1,7 @@
 const path = require("path");
 const sharp = require('sharp')
 const fs = require("fs");
-export const ConvertorController = async (req, res) =>{
+export const Convertor = async (req, res) =>{
         try {
           const imagePath = req.file.path;
           const toFormat = req.body.format;
@@ -42,3 +42,4 @@ export const ConvertorController = async (req, res) =>{
           res.status(500).send("Image conversion failed.");
         }
 }
+module.exports = Convertor;
