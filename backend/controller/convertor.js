@@ -1,7 +1,7 @@
 const path = require("path");
 const sharp = require('sharp')
 const fs = require("fs");
-export const Convertor = async (req, res) =>{
+const Convertor = async (req, res) =>{
         try {
           const imagePath = req.file.path;
           const toFormat = req.body.format;
