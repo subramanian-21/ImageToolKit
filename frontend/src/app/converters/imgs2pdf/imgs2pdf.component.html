@@ -48,6 +48,7 @@
       }"
       class="button-class flex justify-center items-center relative"
       *ngIf="!outImage; else downloadBtn"
+      (click)="sendToServer()"
     >
       {{ loading ? "loading.." : "convert" }}
       <div

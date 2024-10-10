@@ -1,43 +1,42 @@
-const { PDFDocument } = require("pdf-lib");
-const fs = require("fs");
-const fetch = require("node-fetch");
+const express = require('express');
+const multer = require('multer');
+const { PDFDocument } = require('pdf-lib');
+const fs = require('fs');
+const router = express.Router();
 
-const pdfConverter = async (req, uniqueName) => {
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 50 * 1024 * 1024 },  // Adjust file size limit
+});
+
+router.post('/imgs2pdf', upload.array('images'), async (req, res) => {
   try {
-    const images = req.body?.params?.form?.values?.pdfconverter?.files.map((k) => {
-      return {
-        url: k.url,
-        format: k.contenttype.split("/")[1],
-      };
-    });
-  
+    const files = req.files;
+    if (!files || files.length === 0) {
+      return res.status(400).json({ message: 'No files uploaded.' });
+    }
+
+    // Your PDF creation logic
     const pdfDoc = await PDFDocument.create();
-  
-    async function createPdf(k) {
+    await Promise.all(files.map(async (file) => {
       const page = pdfDoc.addPage();
-      const jpgImageBytes = await fetch(k.url).then((res) => res.arrayBuffer());
-      let jpgImage = null;
-      if (k.format === "jpg" || k.format === "jpeg") {
-        jpgImage = await pdfDoc.embedJpg(jpgImageBytes);
-      } else {
-        jpgImage = await pdfDoc.embedPng(jpgImageBytes);
-      }
+      const imageBuffer = file.buffer;
+      const jpgImage = await pdfDoc.embedJpg(imageBuffer); // Assuming JPG for simplicity
       const { width, height } = jpgImage.scale(1);
       page.setSize(width, height);
-  
-      page.drawImage(jpgImage, {
-        x: 0,
-        y: 0,
-        width,
-        height,
-      });
-    }
-  
-    await Promise.all(images.map(async (k) => await createPdf(k)));
-    fs.writeFileSync(`./public/${uniqueName}`, await pdfDoc.save());
+      page.drawImage(jpgImage, { x: 0, y: 0, width, height });
+    }));
+
+    const pdfBytes = await pdfDoc.save();
+    res.set({
+      'Content-Type': 'application/pdf',
+      'Content-Disposition': 'attachment; filename="output.pdf"',
+    });
+    res.send(pdfBytes);
   } catch (error) {
-    console.log(error)
+    console.error('Error processing files:', error);
+    res.status(500).json({ message: 'Error processing files.' });
   }
- 
-};
-module.exports = pdfConverter;
+});
+
+module.exports = router;
