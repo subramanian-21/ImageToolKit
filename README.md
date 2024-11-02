@@ -24,3 +24,5 @@ Explore and manage all your converted images in the Image Gallery. Every image y
 ## Live Demo
 
 You can experience ImageToolKit in action by visiting our live demo at [imagetoolkitapp.onrender.com](https://imagetoolkitapp.onrender.com).
+
+Imagetoolkit's Zoho cliq extension [ImageToolKitExtension](https://cliq.zoho.com/installapp.do?id=5057).
